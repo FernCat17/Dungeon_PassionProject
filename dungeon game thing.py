@@ -25,7 +25,14 @@ print("This is your strength number", strength)
 
 input("Press a key to continue: ")
 
-path_1 = int(input("You see two paths... Input 1 to go left, Input 2 to go right: "))
+path_1 = 0
+while path_1 != 1 and path_1 != 2:
+    try:
+        path_1 = int(input("You see two paths... Input 1 to go left, Input 2 to go right: "))
+        if path_1 != 1 and path_1 != 2:
+            print("Invalid choice! Please input 1 or 2.")
+    except ValueError:
+        print("That’s not a number! Please input 1 or 2.")
 
 if path_1 == 1:
     print("You stumble into a pack of hungry lions! You feel their eyes staring at you with laser focus")
@@ -33,14 +40,13 @@ if path_1 == 1:
 elif path_1 == 2:
     print("You run into a gang of goblins! You sense an ominous aura coming from them")
     input("Press a key to continue: ")
-else:
-    print("Invalid")
-    path_1 = int(input("You see two paths... Input 1 to go left, Input 2 to go right: "))
+
+lion_strength = random.randint(3, 6) 
 
 if path_1 == 1:
-    lion_strength = random.randint(3, 6)  
+    lion_pseudo_mana = lion_strength - 1
     print("The lions leap at you with strength", lion_strength, "!")
-    if strength >= lion_strength:
+    if strength >= lion_strength or mana >= lion_pseudo_mana:
         print("You fight bravely and defeat the lions!")
     else:
         print("The lions overpower you...")
@@ -48,9 +54,10 @@ if path_1 == 1:
 
 elif path_1 == 2:
     goblin_magic = random.randint(1, 6)  
+    goblin_pseudo_strength = goblin_magic - 1
     print("The goblins attack with magic power", goblin_magic, "!")
-    if mana >= goblin_magic:
-        print("You cast a spell and blast the goblins back!")
+    if mana >= goblin_magic or strength >= goblin_pseudo_strength:
+        print("You barely defeat the goblins and continue moving...")
     else:
         print("The goblins swarm you and rip off your head...")
         exit()
@@ -89,20 +96,37 @@ party_member = int(input("Which party member to choose Input 1 for wizard . Inpu
 
 if party_member == 1:
     mana += 2
-    print("You team with the wizard and continue moving foward")
+    print("You team with the wizard and continue moving forward")
     input("Press a key to continue: ")
     print("Your current stats are")
-    input("Press a key to continue: ")
     print("Your current mana number is", mana)
     print("Your current strength number is", strength)
+    input("Press a key to continue: ")
 else:
     strength += 2
-    print("You team with the knight and continue moving foward")
+    print("You team with the knight and continue moving forward")
     input("Press a key to continue: ")
     print("Your current stats are")
     input("Press a key to continue: ")
     print("Your current mana number is", mana)
     print("Your current strength number is", strength)
 
+print("You continue walking with them...")
+input("Press a key to continue: ")
+print("You continue walking and find a group of corrupted mages")
+corrupted_mage_mana = random.randint(4, 6)
+corrupted_mage_pseudostrength = corrupted_mage_mana + 2
+
+if mana > corrupted_mage_mana or strength > corrupted_mage_pseudostrength:
+    print("With a final, desperate strike, you vanquish the mages, yet they leave you weakened, stealing 1 mana!")
+    mana -= 1
+    print("Your current stats are")
+    print("Your current mana number is", mana)
+    print("Your current strength number is", strength)
+    input("Press a key to continue: ")
+else:
+    print("The mages drain your life force and you die")
+    input("Press a key to continue: ")
+    exit()
 
 input("Press a button to end the game: ")
