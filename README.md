@@ -22,16 +22,6 @@ Game ends when the player dies, creating real stakes.
 
 How to Play
 
-Clone the repository:
-
-git clone https://github.com/FernCat17/Dungeon_PassionProject.git
-
-
-Navigate into the project folder:
-
-cd dungeon-escape
-
-
 Run the game:
 
 python "dungeon game thing.py"
@@ -55,4 +45,4 @@ More items, weapons, and spells.
 
 Harder riddles and mini-bosses.
 
-Save/load game functionality.
+Save/load game functionality.(Possible)
