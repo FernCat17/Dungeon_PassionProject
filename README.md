@@ -46,3 +46,6 @@ More items, weapons, and spells.
 Harder riddles and mini-bosses.
 
 Save/load game functionality.(Possible)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
