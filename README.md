@@ -47,5 +47,7 @@ Harder riddles and mini-bosses.
 
 Save/load game functionality.(Possible)
 
+This project is licensed under the MIT License. Please give credit to Shane Fernandes if you use or modify this code.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
