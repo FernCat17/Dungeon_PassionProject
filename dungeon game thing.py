@@ -275,9 +275,57 @@ print("He immediately challenges you!")
 
 enemy_name = "Giant Knight"
 enemy_hp = 150
-hp_defending = False
+defending = False 
+to_a = 10
+to_b = 14
+def combat_function():
+    global hp, enemy_hp
+    defending = False  # make sure defending is initialized
 
-while hp > 0 and enemy_hp > 0:
-    print
+    while hp > 0 and enemy_hp > 0:
+        print("Your HP:", hp, "|", enemy_name, "HP:", enemy_hp)
+
+        action = 0
+        while action not in [1, 2, 3]:
+            try:
+                action = int(input("Choose your action: 1-Attack 2-Defend 3-Cast Spell: "))
+                if action not in [1, 2, 3]:
+                    print("Pick 1, 2, or 3!")
+            except ValueError:
+                print("Pick a number 1, 2, or 3!")
+
+        # Player action
+        if action == 1:
+            attack_dmg = strength * random.randint(2, 5)
+            enemy_hp -= attack_dmg
+            print("You attack and deal", attack_dmg, "damage!")
+        elif action == 2:
+            defending = True
+            print("You brace yourself to defend against the next attack!")
+        elif action == 3:
+            spell_dmg = mana * random.randint(3, 6)
+            enemy_hp -= spell_dmg
+            print("You cast a spell and deal", spell_dmg, "damage!")
+
+        # Enemy attack
+        if enemy_hp > 0:
+            enemy_attack = random.randint(to_a, to_b)
+            if defending:
+                enemy_attack = enemy_attack // 2
+                defending = False
+            hp -= enemy_attack
+            print("The", enemy_name, "strikes back for", enemy_attack, "damage! Your HP is now", hp)
+
+    # End of combat
+    if hp <= 0:
+        print("The", enemy_name, "have defeated you...")
+        exit()
+    else:
+        print("You have defeated the", enemy_name, "! You continue your journey.")
+
+combat_function()
+
+input("Press enter to continue: ")
 
 input("Press enter to end the game: ")
+
